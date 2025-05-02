@@ -1,0 +1,14 @@
+create table Employee(
+   EmpID varchar(255),
+   EmpName varchar(255),
+   Age int,
+   Address varchar(255)
+);
+
+insert into Employee values(1,'Jerwin', 27, 'Bulacan');
+insert into Employee values(2,'Carol', 26, 'Bulacan');
+insert into Employee values(3,'Carol', 26, 'Bulacan');
+select * from Employee where Age = 26;
+
+select count(*) from Employee;
+select count (distinct EmpName) from Employee;
