@@ -1,0 +1,39 @@
+create table Pirate(
+     ID int,
+     Name varchar(255),
+     Age int,
+     Address varchar(255),
+     Role varchar(255),
+     Bounty double
+);
+
+insert into Pirate values (1, 'Luffy', 21, 'Windmill Village', 'Captain', 3000000000);
+insert into Pirate values (2, 'Zoro', 22, 'Shimotsuki Village', 'Swordsman', 1111000000);
+insert into Pirate values (3, 'Nami', 21, 'Conomi Islands', 'Navigator', 366000000);
+insert into Pirate values (4, 'Franky', NULL, 'Water 7', 'Shipwreck', 394000000);
+
+
+-- Select the maximum value
+-- select max(Bounty) from Pirate;
+
+-- Inner Query
+-- Select specific data with condition 2nd Highest
+-- select max(Bounty) from Pirate where Bounty < (select max(Bounty) from Pirate);
+
+---3rd highest
+-- select max(Bounty) from Pirate where Bounty < 
+-- (select max(Bounty) from Pirate where Bounty < 
+-- (select max(Bounty) from Pirate));
+
+-- Limit
+-- Top two datas
+-- select * from Pirate Limit 2;
+
+-- Nth data (n-1,1)
+--2nd highest
+select Bounty from Pirate order by Bounty desc Limit 2-1,1;  
+
+--4th highest
+select Bounty from Pirate order by Bounty desc Limit 4-1,1;  
+
+
