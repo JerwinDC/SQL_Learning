@@ -1,0 +1,28 @@
+create table Pirate(
+     ID int NOT NULL,
+     Name varchar(255),
+     Age int,
+     Address varchar(255),
+     Role varchar(255),
+     Bounty double,
+     Primary Key(ID)
+);
+
+insert into Pirate values (1, 'Luffy', 21, 'Windmill Village', 'Captain', 3000000000);
+insert into Pirate values (2, 'Zoro', 22, 'Shimotsuki Village', 'Swordsman', 1111000000);
+insert into Pirate values (3, 'Nami', 21, 'Conomi Islands', 'Navigator', 366000000);
+insert into Pirate values (4, 'Franky', NULL, 'Water 7', 'Shipwreck', 394000000);
+--Not NULL constraints
+--insert into Pirate values (NULL, 'Nico Robin', 31, 'Ohara', 'Archeologist', 930000000);
+
+
+--Drop Primary Key (Maybe deprecated)
+alter table Pirate drop primary key ID;
+
+-- Add Primary key (Maybe deprecated)
+alter table Pirate add primary key Age;
+
+--Primary Key -- Column with primary key should have unique datas, no null value, only one primary key but it can contain single or multile columns
+insert into Pirate values (4, 'Sanji', 22, 'Barati', 'Cook', 1032000000);
+
+select * from Priate;
