@@ -1,0 +1,35 @@
+create table Pirate(
+     ID int,
+     Name varchar(255),
+     Age int,
+     Address varchar(255),
+     Role varchar(255)
+);
+
+insert into Pirate values (1, 'Luffy', 21, 'Windmill Village', 'Captain');
+insert into Pirate values (2, 'Zoro', 22, 'Shimotsuki Village', 'Swordsman');
+insert into Pirate values (3, 'Nami', 21, 'Conomi Islands', 'Navigator');
+insert into Pirate values (4, 'Franky', NULL, 'Water 7', 'Shipwreck');
+
+-- Select data where Name starts with L
+-- select * from Pirate where Name Like 'Z%';
+
+
+--Select data where Name ends with 1
+-- select * from Pirate where Age Like '%1';
+
+
+--Select data where specific character is match
+-- select * from Pirate where Address Like '%Village%';
+
+--Select data where the following character/s is match  --- Underscore means single character
+-- select * from Pirate where Name Like '__mi%';
+
+--Select date where the starting and ending characte match
+-- select * from Pirate where Role Like '_a%';
+
+--IS NULL
+-- select * from Pirate where Age is Null;
+
+--IS NOT NULL
+select * from Pirate where Age is Not Null;
