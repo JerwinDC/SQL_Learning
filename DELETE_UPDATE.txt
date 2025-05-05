@@ -1,0 +1,2 @@
+DELETE from piratelist where Role = 'Fishman';
+UPDATE piratelist SET Role = 'Sharpshooter' WHERE Name = 'Yassop';
