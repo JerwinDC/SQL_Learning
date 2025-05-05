@@ -1,0 +1,19 @@
+CREATE TABLE Bloodgroup( GROUP_NAME text);
+CREATE TABLE RH( RH_VALUE text);
+
+INSERT INTO Bloodgroup VALUES ('A'), ('B'), ('AB'), ('O');
+
+INSERT INTO RH VALUES ('+'), ('-');
+
+SELECT 	CONCAT(x.GROUP_NAME, y.RH_VALUE)
+	FROM Bloodgroup x 
+	CROSS JOIN RH Y;
+
+-- CONCAT_WS (Add a separator(any character) in between two data, insert in first argument of CONCAT)
+
+
+-- Separate data
+SELECT 	x.GROUP_NAME, y.RH_VALUE
+	FROM Bloodgroup x 
+	CROSS JOIN RH Y;
+
