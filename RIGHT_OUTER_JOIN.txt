@@ -1,0 +1,4 @@
+SELECT x.PirateName_ID, x.Name, x.Role, y.PirateGroupName
+FROM piratelist x
+RIGHT OUTER JOIN pirategroup y
+ON x.PirateName_ID = y.PirateGroup_ID;
