@@ -1,0 +1,8 @@
+SELECT x.PirateName_ID, x.Name, x.Role, y.PirateGroup_ID, y.PirateGroupName 
+FROM piratelist x 
+INNER JOIN pirategroup y
+ON x.PirateName_ID = y.PirateGroup_ID;
+
+
+--Sample update
+UPDATE piratelist SET Role = 'Sharpshooter' WHERE Name = 'Yassop';
