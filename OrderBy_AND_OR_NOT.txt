@@ -9,3 +9,8 @@ insert into Employee values(1,'Lapu Lapu', 40, 'Mactan');
 insert into Employee values(5,'Magellan', 50, 'Portugal');
 insert into Employee values(2,'Emilio', 35, 'Cavite');
 
+-- select * from Employee order by EmpID desc;
+
+-- select * from Employee where Not Age = 35;
+
+select * from Employee where Address Like '_a%' and EmpID >= 1 order by Age desc;
