@@ -1,0 +1,93 @@
+//Connecting to mssql database server using java
+
+
+package Database;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class mssql {
+
+	public static void main(String[] args) {
+		// Steps in Connecting to the database
+
+		// Create the connection with database
+		String myDriver = "com.microsoft.jdbc.sqlserverl.SQLServerDriver";
+		String myUrl = "jdbc:sqlserver://localhost:1433";
+		String connectionUrl = "jdbc:sqlserver://localhost:1433;" + "database=master;" + "user=sa;"
+				+ "password=Jjdcjjdc29;" + "encrypt=true;" + "trustServerCertificate=true;";
+
+		Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		// From Java SQL package, Parameters are url, username(default sa), password ,
+		// returns a connection type
+		try {
+			con = DriverManager.getConnection(connectionUrl, "sa", "Jjdcjjdc29");
+			stmt = con.createStatement();
+			// Bonus display data with a better format
+			// Select Left(PirateID, 20) As PirateID, Left(Name, 20) AS Name, Left(Age,20) AS Age, Left(Role,20) AS Role from PirateList;
+			String insertQuery = "insert into PirateList values(1, 'Zoro', 22, 'Swordsman')";
+			stmt.executeUpdate(insertQuery);
+			String selectQuery = "select * from PirateList;";
+			rs = stmt.executeQuery(selectQuery);
+			
+			// Get metadata to format output nicely
+			ResultSetMetaData metaData = rs.getMetaData();
+			int columnCount = metaData.getColumnCount();
+
+			StringBuilder headerLine = new StringBuilder();
+			StringBuilder separatorLine = new StringBuilder();
+			// Define column widths\n
+			int[] columnWidths = new int[columnCount];
+			for (int i = 1; i <= columnCount; i++) {
+				String columnName = metaData.getColumnName(i);
+				int width = Math.max(columnName.length(), 15);
+				// Minimum width of 15
+				columnWidths[i - 1] = width;
+				// Add column header with padding\n
+				headerLine.append(String.format("%-" + width + "s | ", columnName));
+				// Create separator line\n
+				separatorLine.append("-".repeat(width)).append("-+-");
+			}
+			// Print headers\n
+			System.out.println(headerLine.toString());
+			System.out.println(separatorLine.toString());
+			// Print data rows\n
+			while (rs.next()) {
+				StringBuilder row = new StringBuilder();
+				for (int i = 1; i <= columnCount; i++) {
+					String value = rs.getString(i);
+					if (value == null)
+						value = "NULL";
+					row.append(String.format("%-" + columnWidths[i - 1] + "s | ", value));
+				}
+				System.out.println(row.toString());
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			// Close resources
+			try {
+				if (rs != null)
+					rs.close();
+				if (stmt != null)
+					stmt.close();
+				if (con != null)
+					con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}
+
+
